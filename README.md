@@ -5,7 +5,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Keycloak server
 
+To use the app you've got to have a keycloak server running, downoload https://www.keycloak.org/downloads, unpack and run
+standalone.bat located in the \bin directory (JRE required).
+
+Then proceed to http://localhost:8080 and create an admin user
+
+Enter the admin panell and create a new realm from realm-exort.json file
+
+The last thing to do is creating a new user and setting up permament credentials for him
+
+Shit should work
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
