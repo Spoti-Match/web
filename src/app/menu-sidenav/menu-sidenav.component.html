@@ -1,0 +1,15 @@
+<div>
+  <mat-sidenav-container >
+    <mat-sidenav fixedInViewport="true" position="end" mode="side" [(opened)]="opened">
+      <button mat-button>Ustawienia konta</button>
+      <button mat-button>Ustawienia wyszukiwania</button>
+      <button mat-button>Ustawienia profilu</button>
+      <mat-slide-toggle>Ciemny Motyw</mat-slide-toggle>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button mat-fab class="menu-button" mat-button (click)="opened=!opened">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
