@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
+import * as Keycloak from 'keycloak-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SpotiMatchFrontend';
+  constructor(private keycloak: KeycloakService){
+
+  }
+
+  logout(){
+    this.keycloak.clearToken();
+    this.keycloak.logout();
+  }
 }
