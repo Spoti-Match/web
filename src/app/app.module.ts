@@ -2,7 +2,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { KeycloakInit } from 'src/utils/keycloak-init.factory';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuSidenavComponent } from './menu-sidenav/menu-sidenav.component';
@@ -24,7 +24,7 @@ import { DecisionButtonsComponent } from './decision-buttons/decision-buttons.co
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
     KeycloakAngularModule,
   ],
   providers: [

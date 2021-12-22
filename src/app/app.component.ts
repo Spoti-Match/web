@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
+export class AppComponent {
   title = 'SpotiMatchFrontend';
   constructor(private keycloak: KeycloakService){
 
