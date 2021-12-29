@@ -26,8 +26,13 @@
     background: #1ed760;
     width: 15%;
   }
+  mat-slide-toggle {
+    margin: 8px 0;
+    display: block;
+   }
 }
 
 .mat-drawer-container {
   background-color: rgba(0,0,0,0) !important;
 }
+

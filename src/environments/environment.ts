@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   appUrl: 'http://localhost:4200',
   keycloakConfig: {
-    url: 'http://localhost:8080/auth/',
+    url: 'http://auth.spotimatch.tk/auth',
     realm: 'Spotimatch',
     clientId: 'spotimatch-front-client'
   },
