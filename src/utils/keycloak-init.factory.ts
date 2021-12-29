@@ -6,7 +6,7 @@ export function KeycloakInit(
   return () =>
   keycloak.init({
     config:{
-      url: 'http://localhost:4200',
+      url: 'http://localhost:8080/auth/',
       realm: 'Spotimatch',
       clientId: 'spotimatch-front-client'
     },
