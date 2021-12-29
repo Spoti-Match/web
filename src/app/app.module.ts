@@ -10,6 +10,9 @@ import { MaterialModule } from "./material/material.module";
 import { SidecontainerComponent } from './sidecontainer/sidecontainer.component';
 import { ProfileBrowsingComponent } from './profile-browsing/profile-browsing.component';
 import { DecisionButtonsComponent } from './decision-buttons/decision-buttons.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { SearchSettingsComponent } from './search-settings/search-settings.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { DecisionButtonsComponent } from './decision-buttons/decision-buttons.co
     MenuSidenavComponent,
     SidecontainerComponent,
     ProfileBrowsingComponent,
-    DecisionButtonsComponent
+    DecisionButtonsComponent,
+    AccountSettingsComponent,
+    ProfileSettingsComponent,
+    SearchSettingsComponent
   ],
   imports: [
     BrowserModule,
