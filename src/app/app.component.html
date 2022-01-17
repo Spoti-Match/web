@@ -1,12 +1,16 @@
-<div>
-  <div>
-    <app-menu-sidenav></app-menu-sidenav>
-  </div>
-  <div>
-    <app-sidecontainer></app-sidecontainer>
-  </div>
-  <div fxFill fxLayout="row" fxLayoutAlign="center center">
-    <router-outlet></router-outlet>
-  </div>
+<html>
+  <body  scroll="no" style="overflow: hidden">
+    <div>
+      <div>
+        <app-menu-sidenav></app-menu-sidenav>
+      </div>
+      <div>
+        <app-sidecontainer></app-sidecontainer>
+      </div>
+      <div fxFill fxLayout="row" fxLayoutAlign="center center">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </body>
+</html>
 
-</div>

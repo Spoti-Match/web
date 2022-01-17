@@ -1,10 +1,10 @@
 <div>
   <mat-sidenav-container >
     <mat-sidenav fixedInViewport="true" position="end" mode="side" [(opened)]="opened">
-      <button mat-button fxLayoutAlign="center center" [routerLink]="['AccSett']">Ustawienia konta</button>
-      <button mat-button fxLayoutAlign="center center" [routerLink]="['SearchSett']">Ustawienia wyszukiwania</button>
-      <button mat-button fxLayoutAlign="center center" [routerLink]="['ProfSett']">Ustawienia profilu</button>
-      <mat-slide-toggle fxLayoutAlign="center center" [routerLink]="['ModeSelect']" [(ngModel)]="onoff">Dark Mode: {{onoff}} </mat-slide-toggle>
+      <button mat-button fxLayoutAlign="center center" [routerLinkActive]="['/AccSett']">Ustawienia konta</button>
+      <button mat-button fxLayoutAlign="center center" [routerLink]="['/SearchSett']">Ustawienia wyszukiwania</button>
+      <button mat-button fxLayoutAlign="center center" [routerLink]="['/ProfSett']">Ustawienia profilu</button>
+      <mat-slide-toggle color="black" fxLayoutAlign="center center" [routerLink]="['/ModeSelect']" [(ngModel)]="onoff">Dark Mode: {{onoff}} </mat-slide-toggle>
     </mat-sidenav>
     <mat-sidenav-content>
       <button mat-fab class="menu-button" mat-button (click)="opened=!opened">
