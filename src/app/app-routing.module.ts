@@ -10,12 +10,12 @@ import {SearchSettingsComponent} from "./search-settings/search-settings.compone
 
 const routes: Routes = [
   { path: '', component: ProfileBrowsingComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '' },
   { path: 'profile', component: ProfileChatComponent },
   { path: 'AccSett', component: AccountSettingsComponent },
   { path: 'ProfSett', component: ProfileSettingsComponent },
   { path: 'SearchSett', component: SearchSettingsComponent },
   // { path: 'ModeSett', component: ProfileChatComponent },
+  { path: '**', redirectTo: '' },
 
 ];
 

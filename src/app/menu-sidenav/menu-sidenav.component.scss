@@ -8,7 +8,9 @@
   min-width: 0;
   padding: 0;
   line-height: normal;
-  overflow: hidden;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .mat-sidenav-container {
