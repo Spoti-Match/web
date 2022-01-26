@@ -11,6 +11,15 @@ import { SidecontainerComponent } from './sidecontainer/sidecontainer.component'
 import { ProfileBrowsingComponent } from './profile-browsing/profile-browsing.component';
 import { DecisionButtonsComponent } from './decision-buttons/decision-buttons.component';
 import {RouterModule} from "@angular/router";
+import {MatInputModule} from "@angular/material/input";
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
+import {AccountSettingsComponent} from "./account-settings/account-settings.component";
+import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
+import {SearchSettingsComponent} from "./search-settings/search-settings.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -20,14 +29,28 @@ import {RouterModule} from "@angular/router";
     SidecontainerComponent,
     ProfileBrowsingComponent,
     DecisionButtonsComponent,
+    ProfileSettingsComponent,
+    AccountSettingsComponent,
+    ProfileChatComponent,
+    SearchSettingsComponent,
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     KeycloakAngularModule,
-    RouterModule
+    RouterModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule
+  ],
+
+  entryComponents: [
+
   ],
   providers: [
     {
