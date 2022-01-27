@@ -20,6 +20,7 @@ import {AccountSettingsComponent} from "./account-settings/account-settings.comp
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -36,18 +37,19 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    KeycloakAngularModule,
-    RouterModule,
-    MatInputModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatDatepickerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        KeycloakAngularModule,
+        RouterModule,
+        MatInputModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatSliderModule
+    ],
 
   entryComponents: [
 
