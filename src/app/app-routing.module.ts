@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'ProfSett', component: ProfileSettingsComponent },
   { path: 'SearchSett', component: SearchSettingsComponent },
   // { path: 'ModeSett', component: ProfileChatComponent },
+  { path: 'Return', component: ProfileBrowsingComponent },
   { path: '**', redirectTo: '' },
 
 ];
