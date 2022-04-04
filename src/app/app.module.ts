@@ -21,6 +21,7 @@ import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {MatSliderModule} from "@angular/material/slider";
         FormsModule,
         MatFormFieldModule,
         MatDatepickerModule,
-        MatSliderModule
+        MatSliderModule,
+        MatTooltipModule
     ],
 
   entryComponents: [
