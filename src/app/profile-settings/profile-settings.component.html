@@ -16,6 +16,20 @@
       <input type="lname" matInput placeholder="Doe">
     </mat-form-field>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center" style="height: 300px">
+  <div>
+    <mat-form-field appearance="fill" fxLayoutAlign="center center">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div>
+    <form>
+      <mat-form-field class="example-full-width" style="width: 540px !important; margin-top: 20px" >
+        <mat-label>Opis</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-form-field>
+    </form>
   </div>
 </div>

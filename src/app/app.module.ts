@@ -22,6 +22,7 @@ import {SearchSettingsComponent} from "./search-settings/search-settings.compone
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         MatFormFieldModule,
         MatDatepickerModule,
         MatSliderModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatNativeDateModule
     ],
 
   entryComponents: [
