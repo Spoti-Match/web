@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { KeycloakInit } from 'src/utils/keycloak-init.factory';
+// import { KeycloakInit } from 'src/utils/keycloak-init.factory';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,12 +59,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: KeycloakInit,
-      multi: true,
-      deps: [KeycloakService]
-    }
   ],
   bootstrap: [AppComponent]
 })

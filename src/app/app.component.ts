@@ -12,14 +12,14 @@ import {ErrorStateMatcher} from '@angular/material/core';
 })
 export class AppComponent {
   title = 'SpotiMatchFrontend';
-  constructor(private keycloak: KeycloakService){
+  // constructor(private keycloak: KeycloakService){
+  //
+  // }
 
-  }
-
-  logout(){
-    this.keycloak.clearToken();
-    this.keycloak.logout();
-  }
+  // logout(){
+  //   this.keycloak.clearToken();
+  //   this.keycloak.logout();
+  // }
 }
 
 
