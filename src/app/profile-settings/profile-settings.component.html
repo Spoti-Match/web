@@ -1,8 +1,10 @@
 <div fxLayout="row"  style="height: 100%; margin-top: 40px;">
-  <div class="photos">
-    <p fxLayoutAlign="center center">
-      Zdjęcia użytkownika
-    </p>
+  <div fxLayout="column">
+    <div class="photos">
+      <p fxLayoutAlign="center center">
+        Zdjęcia użytkownika
+      </p>
+    </div>
   </div>
   <div fxLayout="column"  style="margin-left: 40px;">
     <div fxLayout="row" >
@@ -15,14 +17,16 @@
         <input type="lname" matInput placeholder="Doe">
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline" class="date" style="font-size: 18px;">
-        <mat-label>Date of birth</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+    <div fxLayout="row">
+      <div>
+        <mat-form-field appearance="outline" class="date" style="font-size: 18px; margin-right: 20px;">
+          <mat-label>Date of birth</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
     </div>
     <div>
       <form>
@@ -31,6 +35,26 @@
           <textarea [maxLength]="650" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
         </mat-form-field>
       </form>
+    </div>
+    <div>
+      <mat-form-field class="hobby-pick" appearance="outline">
+        <mat-label>Hobbys</mat-label>
+        <mat-select [formControl]="hobbysControl" multiple>
+          <mat-select-trigger>
+            <mat-chip-list>
+              <mat-chip fxLayout="row" *ngFor="let hobby of hobbysControl.value" [removable]="true" (removed)="onHobbyRemoved(hobby)">
+                {{ hobby }}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </mat-select-trigger>
+          <mat-option *ngFor="let hobby of hobbyList" [value]="hobby">{{hobby}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
+      <p *ngIf="showMyMessage">Profile info saved!</p>
     </div>
   </div>
 </div>

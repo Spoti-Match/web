@@ -17,7 +17,7 @@
 }
 
 .txt {
-  height: 300px!important;
+  height: 255px!important;
   resize: none;
   overflow: hidden;
   font-size: 18px;
@@ -31,4 +31,17 @@
   border-radius: 5px;
   -webkit-border-radius: 5px;
   margin-right: 20px
+}
+
+.save {
+  background: #1ed760;
+  color: black;
+  float: right;
+  outline: black;
+}
+.hobby-pick {
+  width: 100%;
+  color: black;
+  float: right;
+  font-size: 18px;
 }

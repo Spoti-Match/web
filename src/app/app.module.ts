@@ -12,7 +12,7 @@ import { ProfileBrowsingComponent } from './profile-browsing/profile-browsing.co
 import { DecisionButtonsComponent } from './decision-buttons/decision-buttons.component';
 import {RouterModule} from "@angular/router";
 import {MatInputModule} from "@angular/material/input";
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
@@ -22,7 +22,10 @@ import {SearchSettingsComponent} from "./search-settings/search-settings.compone
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
+import {MatDividerModule} from "@angular/material/divider";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -39,21 +42,26 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        KeycloakAngularModule,
-        RouterModule,
-        MatInputModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatSliderModule,
-        MatTooltipModule,
-        MatNativeDateModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    KeycloakAngularModule,
+    RouterModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSliderModule,
+    MatTooltipModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    MatOptionModule,
+    MatChipsModule,
+    MatSelectModule,
+    ReactiveFormsModule
+  ],
 
   entryComponents: [
 
