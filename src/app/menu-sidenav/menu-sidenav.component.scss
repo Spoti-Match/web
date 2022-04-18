@@ -1,0 +1,40 @@
+.menu-button {
+  float: right;
+  background: #1ed760;
+  color: black;
+  margin-right: 12px;
+  margin-top: 12px;
+  margin-left: 12px;
+  min-width: 0;
+  padding: 0;
+  line-height: normal;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.mat-sidenav-container {
+  min-height: 100% !important;
+  height: 100% !important;
+
+  mat-sidenav, mat-sidenav-content {
+    padding: 15px;
+    color: black;
+    right: 0;
+    top : 0;
+
+  }
+  mat-sidenav {
+    background: #1ed760;
+    width: 15vw;
+  }
+  mat-slide-toggle {
+    margin: 8px;
+    display: block;
+   }
+}
+
+.mat-drawer-container {
+  background-color: rgba(0,0,0,0) !important;
+}
+

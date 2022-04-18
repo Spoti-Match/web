@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%; margin-top: 40px;">
+  <div style="width:350px; height: 540px; border: 2px solid black; background-color: #1ed760; border-radius: 5px; -webkit-border-radius: 5px; margin-top: 8vh">
+    <p fxLayoutAlign="center center">
+      Zdjęcia użytkownika
+    </p>
+  </div>
+</div>
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 300px;">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field fxLayoutAlign="space-around-center" class="example-full-width" appearance="fill" style="margin-top: 50px">
+      <mat-label>First name</mat-label>
+      <input type="fname" matInput placeholder="John">
+    </mat-form-field>
+    <mat-form-field fxLayoutAlign="center center" class="example-full-width" appearance="fill" style="margin-left: 20px; margin-top: 50px" >
+      <mat-label>Last name</mat-label>
+      <input type="lname" matInput placeholder="Doe">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" fxLayoutAlign="center center">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div>
+    <form>
+      <mat-form-field class="example-full-width" style="width: 540px !important; margin-top: 20px" >
+        <mat-label>Opis</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
