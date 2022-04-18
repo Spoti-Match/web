@@ -26,6 +26,7 @@ import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
 
 @NgModule({
@@ -42,26 +43,27 @@ import {MatSelectModule} from "@angular/material/select";
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    KeycloakAngularModule,
-    RouterModule,
-    MatInputModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatSliderModule,
-    MatTooltipModule,
-    MatNativeDateModule,
-    MatDividerModule,
-    MatOptionModule,
-    MatChipsModule,
-    MatSelectModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        KeycloakAngularModule,
+        RouterModule,
+        MatInputModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatSliderModule,
+        MatTooltipModule,
+        MatNativeDateModule,
+        MatDividerModule,
+        MatOptionModule,
+        MatChipsModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        NgxSliderModule
+    ],
 
   entryComponents: [
 

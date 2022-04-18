@@ -9,13 +9,13 @@ import {FormControl} from "@angular/forms";
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  hobbysControl = new FormControl([]);
+  hobbiesControl = new FormControl([]);
   hobbyList: string[] = ['Reading', 'Stargazing', 'Hiking', 'Cooking', 'Board games', 'Video games', 'Cars', 'Traveling'];
 
   onHobbyRemoved(hobby: string) {
-    const hobbys = this.hobbysControl.value as string[];
-    this.removeFirst(hobbys, hobby);
-    this.hobbysControl.setValue(hobbys); // To trigger change detection
+    const hobbies = this.hobbiesControl.value as string[];
+    this.removeFirst(hobbies, hobby);
+    this.hobbiesControl.setValue(hobbies); // To trigger change detection
   }
 
   private removeFirst<T>(array: T[], toRemove: T): void {

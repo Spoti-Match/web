@@ -1,21 +1,17 @@
-<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%; margin-top: -50px;">
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <p>
-      Wiek od:
-      <mat-slider thumbLabel [displayWith]="formatLabel" step="1" min="18" max="100" aria-label="units" style="width: 350px"></mat-slider>
-    </p>
-    <p>
-      Wiek do:
-      <mat-slider thumbLabel [displayWith]="formatLabel" step="1" min="18" max="100" aria-label="units" style="width: 350px"></mat-slider>
-    </p>
-    <p>
-      Płeć:
-    </p>
-    <p>
-      <mat-slide-toggle>Kobieta</mat-slide-toggle>
-    </p>
-    <p>
-      <mat-slide-toggle>Mężczyzna</mat-slide-toggle>
-    </p>
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 100%;">
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 30px">
+    <p style="margin-right: 20px;">Age range: </p>
+      <ngx-slider style="width: 450px;" [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 30px">
+    <p style="margin-right: 20px;">Show me: </p>
+    <mat-form-field>
+      <mat-label>Choose</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let gender of genders" [value]="gender.value">
+          {{gender.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>

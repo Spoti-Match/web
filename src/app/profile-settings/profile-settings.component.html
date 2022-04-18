@@ -38,11 +38,11 @@
     </div>
     <div>
       <mat-form-field class="hobby-pick" appearance="outline">
-        <mat-label>Hobbys</mat-label>
-        <mat-select [formControl]="hobbysControl" multiple>
+        <mat-label>Hobbies</mat-label>
+        <mat-select [formControl]="hobbiesControl" multiple>
           <mat-select-trigger>
             <mat-chip-list>
-              <mat-chip fxLayout="row" *ngFor="let hobby of hobbysControl.value" [removable]="true" (removed)="onHobbyRemoved(hobby)">
+              <mat-chip fxLayout="row" *ngFor="let hobby of hobbiesControl.value" [removable]="true" (removed)="onHobbyRemoved(hobby)">
                 {{ hobby }}
                 <mat-icon matChipRemove>cancel</mat-icon>
               </mat-chip>
