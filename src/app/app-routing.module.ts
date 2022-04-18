@@ -9,7 +9,7 @@ import {ProfileSettingsComponent} from "./profile-settings/profile-settings.comp
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 
 const routes: Routes = [
-  { path: '', component: ProfileBrowsingComponent, canActivate: [AuthGuard] },
+  { path: '', component: ProfileBrowsingComponent},
   { path: 'profile', component: ProfileChatComponent },
   { path: 'AccSett', component: AccountSettingsComponent },
   { path: 'ProfSett', component: ProfileSettingsComponent },

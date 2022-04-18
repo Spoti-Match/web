@@ -23,8 +23,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpRouting } from 'src/utils/httpRouting';
 
 
+export function tokenGetter(){
+  return sessionStorage.getItem("authToken");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +47,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     CUSTOM_ELEMENTS_SCHEMA ],
     imports: [
         BrowserModule,
+        JwtModule.forRoot({
+          config: {
+          tokenGetter: tokenGetter,
+          authScheme: "Bearer ",
+          allowedDomains: ["localhost:8081","https://api.spotimatch.tk"]
+        },
+      }),
+        HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
@@ -58,14 +72,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   entryComponents: [
 
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: KeycloakInit,
-      multi: true,
-      deps: [KeycloakService]
-    }
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
