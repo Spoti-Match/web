@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {VERSION} from "@angular/forms";
 
 @Component({
   selector: 'app-profile-chat',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-chat.component.scss']
 })
 export class ProfileChatComponent implements OnInit {
+
+name='Angular ' + VERSION.major;
 
   constructor() { }
 

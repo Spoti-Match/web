@@ -1,0 +1,47 @@
+.chatbody {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+
+  height: 800px;
+  width: 1000px;
+  background: aquamarine;
+  margin: auto;
+  border: solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatlist {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  .chatitem {
+    max-width: 80%;
+    background: red;
+    margin: 8px 0px;
+
+    p {
+
+    }
+  }
+
+
+  .l {
+    margin-left: 0;
+    margin-right: auto;
+
+  }
+
+  .r {
+    margin-left: auto;
+    margin-right: 0;
+
+  }
+}
+
