@@ -5,7 +5,6 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuSidenavComponent } from './menu-sidenav/menu-sidenav.component';
 import { MaterialModule } from "./material/material.module";
 import { SidecontainerComponent } from './sidecontainer/sidecontainer.component';
 import { ProfileBrowsingComponent } from './profile-browsing/profile-browsing.component';
@@ -32,7 +31,6 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
 @NgModule({
   declarations: [
     AppComponent,
-    MenuSidenavComponent,
     SidecontainerComponent,
     ProfileBrowsingComponent,
     DecisionButtonsComponent,

@@ -1,17 +1,18 @@
-<div class="chatbody" fxLayout="column" fxLayoutAlign="center center">
+<div class="chatbody">
   <div class="card">
     <div class="chatlist">
-      <div class="chatitem l">
-        <p>test</p>
-      </div>
-      <div class="chatitem r">
-        <p>testtetase
-          uweairghiqweuhiuqwheiwhuiwhiudwhiduhwuidhwiouhndwuio hiowerte5bterbte4bte4bttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-          testtesttesttesttesttesttesttesttesttesttesttesttesttesttestuweairghiqweuhiuqwheiwhuiwhiudwhiduhwuidhwiouhndwuio hiowerte5bterbte4bte4bttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestuweairghiqweuhiuqwheiwhuiwhiudwhiduhwuidhwiouhndwuio hiowerte5bterbte4bte4bttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-          testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-          testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-        </p>
-      </div>
+      <ng-container *ngFor="let item of chatmessage">
+        <div class="chatitem" [ngClass]="{'r': item?.user?.id == currentUser.id, 'l': item?.user?.id != currentUser.id}">
+          <img id="profpic" [src]="item.user.profileImageUrl"/>
+          <p id="msg-elem">{{item?.message}}</p>
+          <span id="time">{{ item.createdat | date:'HH:mm'}}</span>
+        </div>
+      </ng-container>
+    </div>
+    <div class="chat-footer">
+      <textarea id="msginput">
+
+      </textarea>
     </div>
   </div>
 </div>
