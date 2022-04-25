@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {VERSION} from "@angular/forms";
 
 @Component({
@@ -7,6 +7,10 @@ import {VERSION} from "@angular/forms";
   styleUrls: ['./profile-chat.component.scss']
 })
 export class ProfileChatComponent implements OnInit {
+
+  @ViewChild("ChatListContainer", {static: false}) ChatListContainer : ElementRef
+
+  chatInput: string ="";
 
   currentUser = {
     name: "John Doe",
@@ -65,6 +69,24 @@ export class ProfileChatComponent implements OnInit {
 
 
 name='Angular ' + VERSION.major;
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  send() {
+    this.chatmessage.push({
+      message: this.chatInput,
+      user: this.currentUser,
+      createdat: Date.now()
+    });
+    this.chatInput ='';
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.ChatListContainer.nativeElement.scrollTop = this.ChatListContainer.nativeElement.scrollHeight
+  }
 
   constructor() { }
 

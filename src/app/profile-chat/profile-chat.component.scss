@@ -14,14 +14,17 @@ $prim: #1ed760;
   background: $background;
   flex-direction: column;
   width: 1600px;
-  display: inline-list-item;
+  display: flex;
 }
 
 .chatlist {
   display: flex;
+  height: 100vh;
+  width: 1600px;
   flex-direction: column;
   margin-top: auto;
   padding: 16px;
+  overflow-y: scroll;
   .chatitem {
     max-width: 80%;
     margin: 8px 0;
@@ -76,8 +79,24 @@ $prim: #1ed760;
 }
 
 .chat-footer {
-  float: bottom;
-  .msginput {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  min-height: 70px;
+  #msginput {
+    flex: 1;
+    font-size: 18px;
+    margin: 0 8px;
+    border: 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+
+  }
+  #sendbuton {
+    border: 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    background: white;
+    padding: 0 8px;
 
   }
 }

@@ -1,6 +1,6 @@
 <div class="chatbody">
   <div class="card">
-    <div class="chatlist">
+    <div class="chatlist" #ChatListContainer>
       <ng-container *ngFor="let item of chatmessage">
         <div class="chatitem" [ngClass]="{'r': item?.user?.id == currentUser.id, 'l': item?.user?.id != currentUser.id}">
           <img id="profpic" [src]="item.user.profileImageUrl"/>
@@ -10,9 +10,8 @@
       </ng-container>
     </div>
     <div class="chat-footer">
-      <textarea id="msginput">
-
-      </textarea>
+      <textarea id="msginput" [(ngModel)]="chatInput"></textarea>
+      <button id="sendbutton" (click)="send(); scrollToBottom()" [disabled]="chatInput.length <= 0">Send</button>
     </div>
   </div>
 </div>
