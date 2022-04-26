@@ -1,28 +1,34 @@
-<div class="sidecontainer" style="-moz-box-shadow:  3px 0 0 #000000; -webkit-box-shadow:  3px 0 0 #000000;
-  box-shadow: inset 0 0 10px #000000;">
+<div class="sidecontainer">
   <div fxLayout="column" fxLayoutAlign="center">
     <div fxLayout="row">
       <button mat-button  routerLink="" matTooltip="Return to main screen">
-        <mat-icon>favorite</mat-icon>
+        <mat-icon>home</mat-icon>
       </button>
       <button mat-button routerLink="ProfSett" matTooltip="Profile settings">
         <mat-icon>person</mat-icon>
       </button>
-      <button mat-button routerLink="SearchSett" matTooltip="Search settings">
-        <mat-icon>search</mat-icon>
+      <button mat-button routerLink="AccSett" matTooltip="Search settings">
+        <mat-icon>settings</mat-icon>
       </button>
       <button mat-button matTooltip="Dark mode enable/disable">
         <mat-icon>brightness_2</mat-icon>
       </button>
+      <button mat-button  routerLink="" matTooltip="Liked you">
+        <mat-icon>favorite</mat-icon>
+      </button>
     </div>
-    <button mat-button fxLayoutAlign="center" (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
-    <p fxLayoutAlign="center">
-      -----------------------
-    </p>
-    <button mat-button fxLayoutAlign="center" routerLink="profile" >Profil 1</button>
-    <button mat-button fxLayoutAlign="center" routerLink="profile">Profil 2</button>
-    <p fxLayoutAlign="center">
-      ITD.
-    </p>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-divider></mat-divider>
+      <button mat-button  (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
+      <mat-divider></mat-divider>
+      <button mat-button  routerLink="profile" >Profil 1</button>
+      <mat-divider></mat-divider>
+      <button mat-button  routerLink="profile">Profil 2</button>
+      <mat-divider></mat-divider>
+      <p fxLayoutAlign="center">
+        ITD.
+      </p>
+      <mat-divider></mat-divider>
+    </div>
   </div>
 </div>

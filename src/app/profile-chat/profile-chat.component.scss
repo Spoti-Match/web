@@ -1,0 +1,103 @@
+$background: white;
+$prim: #1ed760;
+
+.chatbody {
+  display: flex;
+  height: 100vh;
+  z-index: 99;
+  flex-direction: column;
+}
+
+.card {
+  height: 100vh;
+  z-index: 99;
+  background: $background;
+  flex-direction: column;
+  width: 1600px;
+  display: flex;
+}
+
+.chatlist {
+  display: flex;
+  height: 100vh;
+  width: 1600px;
+  flex-direction: column;
+  margin-top: auto;
+  padding: 16px;
+  overflow-y: scroll;
+  .chatitem {
+    max-width: 80%;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: row;
+
+    #msg-elem {
+      margin: auto 8px;
+      background: #1ed760;
+      padding: 8px 24px;
+      border-radius: 24px;
+      filter: drop-shadow(1px 1px 3px black);
+    }
+
+    #profpic {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+      z-index: 100;
+      border: 3px solid $background;
+    }
+
+    #time {
+      margin: auto 0;
+      padding-top: 20px;
+    }
+  }
+
+  .l {
+    margin-left: 8px;
+    margin-right: auto;
+
+    #msg-elem {
+      margin-left: -13px;
+      margin-top: 21px;
+    }
+
+  }
+
+  .r {
+    margin-left: auto;
+    margin-right: 8px;
+    flex-direction: row-reverse;
+
+    #msg-elem {
+      margin-right: -18px;
+      margin-top: 21px;
+    }
+
+  }
+}
+
+.chat-footer {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  min-height: 70px;
+  #msginput {
+    flex: 1;
+    font-size: 18px;
+    margin: 0 8px;
+    border: 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+
+  }
+  #sendbuton {
+    border: 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    background: white;
+    padding: 0 8px;
+
+  }
+}
+

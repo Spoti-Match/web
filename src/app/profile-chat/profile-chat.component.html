@@ -1,6 +1,18 @@
-<p>profile-chat works!</p>
-<button (click) = "test()"> DUPA </button>
-<br>
-<button (click) = "test2()">asbab</button>
-<br>
-<button (click) = "test3()">asbab</button>
+<div class="chatbody">
+  <div class="card">
+    <div class="chatlist" #ChatListContainer>
+      <ng-container *ngFor="let item of chatmessage">
+        <div class="chatitem" [ngClass]="{'r': item?.user?.id == currentUser.id, 'l': item?.user?.id != currentUser.id}">
+          <img id="profpic" [src]="item.user.profileImageUrl"/>
+          <p id="msg-elem">{{item?.message}}</p>
+          <span id="time">{{ item.createdat | date:'HH:mm'}}</span>
+        </div>
+      </ng-container>
+    </div>
+    <div class="chat-footer">
+      <textarea id="msginput" [(ngModel)]="chatInput"></textarea>
+      <button id="sendbutton" (click)="send(); scrollToBottom()" [disabled]="chatInput.length <= 0">Send</button>
+    </div>
+  </div>
+</div>
+
