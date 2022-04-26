@@ -10,6 +10,7 @@ export const environment = {
   //   realm: 'Spotimatch',
   //   clientId: 'spotimatch-front-client'
   // },
+
 };
 
 /*

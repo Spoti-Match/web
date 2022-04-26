@@ -26,8 +26,16 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpRouting } from 'src/utils/httpRouting';
 
 
+
+export function tokenGetter(){
+  return sessionStorage.getItem("authToken");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +51,14 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     CUSTOM_ELEMENTS_SCHEMA ],
     imports: [
         BrowserModule,
+        JwtModule.forRoot({
+          config: {
+          tokenGetter: tokenGetter,
+          authScheme: "Bearer ",
+          allowedDomains: ["localhost:8081","https://api.spotimatch.tk"]
+        },
+      }),
+        HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
@@ -66,8 +82,10 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
   entryComponents: [
 
   ],
-  providers: [
-  ],
+
+  providers: [],
+
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
