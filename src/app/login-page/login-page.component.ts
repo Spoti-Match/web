@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { UserService } from '../user-service/user.service';
@@ -14,7 +15,8 @@ export class LoginPageComponent implements OnInit {
   displayPassword: Boolean;
 
   constructor(private userService: UserService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.displayPassword = false;
@@ -33,6 +35,9 @@ export class LoginPageComponent implements OnInit {
     ),
   });
 
+  register(){
+    this.router.navigateByUrl("/register");
+  }
   onSubmit(){
     let authCredentials = new AuthenticationRequest(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value)
     this.userService.logIn(authCredentials).subscribe(
