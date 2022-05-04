@@ -1,0 +1,19 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="login-form">
+      <mat-card-content>
+        <mat-form-field class="login-full-width">
+          <input id="email" type="text" formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field class="login-full-width">
+          <input id="password" [type]="displayPassword ? 'text' : 'password' " formControlName="password" matInput placeholder="Password">
+          <mat-icon (click)="changeVisibility()" aria-hidden="false" aria-label="Password Visibility">{{!displayPassword? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit" [disabled]="!loginForm.valid">Log in</button>
+    </form>
+  </mat-card>
+</div>

@@ -4,6 +4,7 @@ import * as Keycloak from 'keycloak-js';
 import { environment } from 'src/environments/environment';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { UserService } from './user-service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,11 @@ import {ErrorStateMatcher} from '@angular/material/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'SpotiMatchFrontend';
-  // constructor(private keycloak: KeycloakService){
-  //
-  // }
+  constructor(public userService: UserService){
 
-  // logout(){
-  //   this.keycloak.clearToken();
-  //   this.keycloak.logout();
-  // }
+  }
+
+  title = 'SpotiMatchFrontend';
 }
 
 

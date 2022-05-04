@@ -4,10 +4,10 @@
       <button mat-button  routerLink="" matTooltip="Return to main screen">
         <mat-icon>home</mat-icon>
       </button>
-      <button mat-button routerLink="ProfSett" matTooltip="Profile settings">
+      <button mat-button routerLink="profileSettings" matTooltip="Profile settings">
         <mat-icon>person</mat-icon>
       </button>
-      <button mat-button routerLink="AccSett" matTooltip="Search settings">
+      <button mat-button routerLink="accountSettings" matTooltip="Search settings">
         <mat-icon>settings</mat-icon>
       </button>
       <button mat-button matTooltip="Dark mode enable/disable">
@@ -24,6 +24,8 @@
       <button mat-button  routerLink="profile" >Profil 1</button>
       <mat-divider></mat-divider>
       <button mat-button  routerLink="profile">Profil 2</button>
+      <mat-divider></mat-divider>
+      <button (click)="logoutButton()" mat-button  routerLink="profile">Test logout</button>
       <mat-divider></mat-divider>
       <p fxLayoutAlign="center">
         ITD.

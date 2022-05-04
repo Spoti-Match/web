@@ -1,7 +1,7 @@
 <html>
   <body  scroll="no">
     <div>
-      <div>
+      <div *ngIf="this.userService.isLoggedIn()">
         <app-sidecontainer></app-sidecontainer>
       </div>
       <div fxFill fxLayout="row" fxLayoutAlign="center center">
