@@ -29,8 +29,11 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpRouting } from 'src/utils/httpRouting';
-
-
+import { AuthGuard} from './auth/authGuard';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { FlexLayoutModule, } from '@angular/flex-layout';
+import { RegisterGuard} from './auth/registerGuard';
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -45,6 +48,8 @@ export function tokenGetter(){
     AccountSettingsComponent,
     ProfileChatComponent,
     SearchSettingsComponent,
+    RegisterPageComponent,
+    LoginPageComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],
@@ -58,6 +63,7 @@ export function tokenGetter(){
         },
       }),
         HttpClientModule,
+        FlexLayoutModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
@@ -82,7 +88,8 @@ export function tokenGetter(){
 
   ],
 
-  providers: [],
+  providers: [AuthGuard,
+  RegisterGuard],
 
 
   bootstrap: [AppComponent]
