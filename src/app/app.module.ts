@@ -17,7 +17,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
 import {AccountSettingsComponent} from "./account-settings/account-settings.component";
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
-import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTooltipModule} from "@angular/material/tooltip";
@@ -37,7 +36,6 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     ProfileSettingsComponent,
     AccountSettingsComponent,
     ProfileChatComponent,
-    SearchSettingsComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],

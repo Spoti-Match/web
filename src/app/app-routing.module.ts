@@ -6,14 +6,13 @@ import {ProfileBrowsingComponent} from "./profile-browsing/profile-browsing.comp
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
 import {AccountSettingsComponent} from "./account-settings/account-settings.component";
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
-import {SearchSettingsComponent} from "./search-settings/search-settings.component";
+
 
 const routes: Routes = [
   { path: '', component: ProfileBrowsingComponent },
   { path: 'profile', component: ProfileChatComponent },
   { path: 'AccSett', component: AccountSettingsComponent },
   { path: 'ProfSett', component: ProfileSettingsComponent },
-  { path: 'SearchSett', component: SearchSettingsComponent },
   // { path: 'ModeSett', component: ProfileChatComponent },
   { path: 'Return', component: ProfileBrowsingComponent },
   { path: '**', redirectTo: '' },
@@ -25,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent]
+export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, ProfileChatComponent]
