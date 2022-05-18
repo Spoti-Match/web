@@ -34,6 +34,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FlexLayoutModule, } from '@angular/flex-layout';
 import { RegisterGuard} from './auth/registerGuard';
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -53,36 +55,38 @@ export function tokenGetter(){
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA ],
-    imports: [
-        BrowserModule,
-        JwtModule.forRoot({
-          config: {
-          tokenGetter: tokenGetter,
-          authScheme: "Bearer ",
-          allowedDomains: ["localhost:8081","https://api.spotimatch.tk"]
-        },
-      }),
-        HttpClientModule,
-        FlexLayoutModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        KeycloakAngularModule,
-        RouterModule,
-        MatInputModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatSliderModule,
-        MatTooltipModule,
-        MatNativeDateModule,
-        MatDividerModule,
-        MatOptionModule,
-        MatChipsModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        NgxSliderModule
-    ],
+  imports: [
+    BrowserModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        authScheme: "Bearer ",
+        allowedDomains: ["localhost:8081", "https://api.spotimatch.tk"]
+      },
+    }),
+    HttpClientModule,
+    FlexLayoutModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    KeycloakAngularModule,
+    RouterModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSliderModule,
+    MatTooltipModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    MatOptionModule,
+    MatChipsModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    NgxSliderModule,
+    MatCardModule,
+    MatToolbarModule
+  ],
 
   entryComponents: [
 

@@ -1,29 +1,29 @@
 <div class="sidecontainer">
   <div fxLayout="column" fxLayoutAlign="center">
-    <div fxLayout="row">
-      <button mat-button  routerLink="" matTooltip="Return to main screen">
+    <div fxLayout="row" style="width: 100%!important;">
+      <button mat-button style="width: 20%!important;"  routerLink="" matTooltip="Return to main screen">
         <mat-icon>home</mat-icon>
       </button>
-      <button mat-button routerLink="profileSettings" matTooltip="Profile settings">
+      <button mat-button routerLink="profileSettings" style="width: 20%!important;" matTooltip="Profile settings">
         <mat-icon>person</mat-icon>
       </button>
-      <button mat-button routerLink="accountSettings" matTooltip="Search settings">
+      <button mat-button routerLink="accountSettings" style="width: 20%!important;" matTooltip="Search settings">
         <mat-icon>settings</mat-icon>
       </button>
-      <button mat-button matTooltip="Dark mode enable/disable">
+      <button mat-button matTooltip="Dark mode enable/disable" style="width: 20%!important;">
         <mat-icon>brightness_2</mat-icon>
       </button>
-      <button mat-button  routerLink="" matTooltip="Liked you">
+      <button mat-button  routerLink="" matTooltip="Liked you" style="width: 20%!important;">
         <mat-icon>favorite</mat-icon>
       </button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center">
       <mat-divider></mat-divider>
-      <button mat-button  (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
+      <button mat-button (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
       <mat-divider></mat-divider>
-      <button mat-button  routerLink="profile" >Profil 1</button>
+      <button mat-button style="cursor: pointer"  routerLink="profile" >Profil 1</button>
       <mat-divider></mat-divider>
-      <button mat-button  routerLink="profile">Profil 2</button>
+      <button mat-button style="cursor: pointer" routerLink="profile">Profil 2</button>
       <mat-divider></mat-divider>
       <button (click)="logoutButton()" mat-button  routerLink="profile">Test logout</button>
       <mat-divider></mat-divider>
@@ -34,3 +34,5 @@
     </div>
   </div>
 </div>
+
+

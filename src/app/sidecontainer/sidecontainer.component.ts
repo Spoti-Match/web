@@ -8,6 +8,9 @@ import { UserService } from '../user-service/user.service';
   styleUrls: ['./sidecontainer.component.scss']
 })
 export class SidecontainerComponent implements OnInit {
+  opened = false;
+  sidenav: any;
+
 
   constructor(private router: Router,private userService: UserService) { }
 
