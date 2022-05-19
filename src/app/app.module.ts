@@ -28,6 +28,7 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpRouting } from 'src/utils/httpRouting';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 
@@ -49,12 +50,12 @@ export function tokenGetter(){
     imports: [
         BrowserModule,
         JwtModule.forRoot({
-          config: {
-          tokenGetter: tokenGetter,
-          authScheme: "Bearer ",
-          allowedDomains: ["localhost:8081","https://api.spotimatch.tk"]
-        },
-      }),
+            config: {
+                tokenGetter: tokenGetter,
+                authScheme: "Bearer ",
+                allowedDomains: ["localhost:8081", "https://api.spotimatch.tk"]
+            },
+        }),
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -73,7 +74,8 @@ export function tokenGetter(){
         MatChipsModule,
         MatSelectModule,
         ReactiveFormsModule,
-        NgxSliderModule
+        NgxSliderModule,
+        MatToolbarModule
     ],
 
   entryComponents: [

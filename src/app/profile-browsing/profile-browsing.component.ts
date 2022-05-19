@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-browsing.component.scss']
 })
 export class ProfileBrowsingComponent implements OnInit {
+  opened = false;
 
   constructor() { }
 

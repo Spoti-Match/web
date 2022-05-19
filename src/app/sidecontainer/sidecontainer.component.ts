@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidecontainer.component.scss']
 })
 export class SidecontainerComponent implements OnInit {
+  opened = false;
 
   constructor(private router: Router) { }
 
