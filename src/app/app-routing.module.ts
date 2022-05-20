@@ -9,17 +9,25 @@ import { AuthGuard } from './auth/authGuard';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { RegisterGuard } from './auth/registerGuard';
+import {SidecontainerComponent} from "./sidecontainer/sidecontainer.component";
 
 const routes: Routes = [
-  { path: '', component: ProfileBrowsingComponent,canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard]},
-  { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'return', component: ProfileBrowsingComponent ,canActivate: [AuthGuard]},
-  { path: 'login',component: LoginPageComponent,canActivate:[RegisterGuard]},
-  { path: 'register',component: RegisterPageComponent,canActivate:[RegisterGuard]},
-  { path: '**', redirectTo: '' ,canActivate: [AuthGuard] },
+  { path: 'login',component: LoginPageComponent,canActivate:[RegisterGuard], outlet: 'main'},
+  { path: 'register',component: RegisterPageComponent,canActivate:[RegisterGuard], outlet: 'main'},
+  { path: '**', redirectTo: 'mainpage' ,canActivate: [AuthGuard], outlet: 'main'  },
+  { path: 'mainpage',
+    component: SidecontainerComponent,
+    canActivate: [AuthGuard],
+    outlet: 'main',
+    children: [
+      { path: '', component: ProfileBrowsingComponent,canActivate: [AuthGuard], outlet: 'comps' },
+      { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'return', component: ProfileBrowsingComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+    ]
+  },
 ];
 
 @NgModule({
@@ -27,4 +35,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent]
+export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent, SidecontainerComponent, LoginPageComponent, RegisterPageComponent]

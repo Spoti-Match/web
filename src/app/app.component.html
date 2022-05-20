@@ -1,11 +1,11 @@
 <html>
   <body  scroll="no">
     <div>
-      <div *ngIf="this.userService.isLoggedIn()">
-        <app-sidecontainer></app-sidecontainer>
-      </div>
+<!--      <div *ngIf="this.userService.isLoggedIn()">-->
+<!--        <app-sidecontainer></app-sidecontainer>-->
+<!--      </div>-->
       <div fxFill fxLayout="row" fxLayoutAlign="center center">
-        <router-outlet></router-outlet>
+        <router-outlet name="main"></router-outlet>
       </div>
     </div>
   </body>

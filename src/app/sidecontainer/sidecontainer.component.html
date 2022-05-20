@@ -1,38 +1,50 @@
-<div class="sidecontainer">
-  <div fxLayout="column" fxLayoutAlign="center">
-    <div fxLayout="row" style="width: 100%!important;">
-      <button mat-button style="width: 20%!important;"  routerLink="" matTooltip="Return to main screen">
-        <mat-icon>home</mat-icon>
-      </button>
-      <button mat-button routerLink="profileSettings" style="width: 20%!important;" matTooltip="Profile settings">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-button routerLink="accountSettings" style="width: 20%!important;" matTooltip="Search settings">
-        <mat-icon>settings</mat-icon>
-      </button>
-      <button mat-button matTooltip="Dark mode enable/disable" style="width: 20%!important;">
-        <mat-icon>brightness_2</mat-icon>
-      </button>
-      <button mat-button  routerLink="" matTooltip="Liked you" style="width: 20%!important;">
-        <mat-icon>favorite</mat-icon>
-      </button>
-    </div>
-    <div fxLayout="column" fxLayoutAlign="center">
-      <mat-divider></mat-divider>
-      <button mat-button (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
-      <mat-divider></mat-divider>
-      <button mat-button style="cursor: pointer"  routerLink="profile" >Profil 1</button>
-      <mat-divider></mat-divider>
-      <button mat-button style="cursor: pointer" routerLink="profile">Profil 2</button>
-      <mat-divider></mat-divider>
-      <button (click)="logoutButton()" mat-button  routerLink="profile">Test logout</button>
-      <mat-divider></mat-divider>
-      <p fxLayoutAlign="center">
-        ITD.
+<div>
+  <mat-sidenav-container >
+    <mat-sidenav fixedInViewport="true" mode="side" [(opened)]="opened">
+      <div class="side-container">
+        <div fxLayout="column" fxLayoutAlign="center">
+          <div fxLayout="column" fxLayoutAlign="center">
+            <mat-divider></mat-divider>
+            <button mat-button  (click)="profil()" style="cursor: pointer">Profil Użytkownika</button>
+            <mat-divider></mat-divider>
+            <button mat-button  routerLink="profile" >Zdjęcie | Nazwa profilu | godzina ostatniej wiadomości</button>
+            <mat-divider></mat-divider>
+            <button mat-button  routerLink="profile">Profil 2</button>
+            <mat-divider></mat-divider>
+            <p fxLayoutAlign="center">
+              ITD.
+            </p>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <p>
+        <mat-toolbar class="toolbar">
+          <button mat-icon-button class="menu button" (click)="opened=!opened">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>Spotimatch</span>
+          <span class="spacer"></span>
+          <button mat-button   routerLink="mainpage" matTooltip="Return to main screen">
+            <mat-icon>home</mat-icon>
+          </button>
+          <button mat-button  routerLink="ProfSett" matTooltip="Profile settings">
+            <mat-icon>person</mat-icon>
+          </button>
+          <button mat-button  routerLink="AccSett" matTooltip="Search settings">
+            <mat-icon>settings</mat-icon>
+          </button>
+          <button mat-button  matTooltip="Dark mode enable/disable">
+            <mat-icon>brightness_2</mat-icon>
+          </button>
+          <button mat-button routerLink="" matTooltip="Liked you">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </mat-toolbar>
       </p>
-      <mat-divider></mat-divider>
-    </div>
-  </div>
+      <router-outlet name="comps"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-
-
