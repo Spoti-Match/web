@@ -12,22 +12,20 @@ import { RegisterGuard } from './auth/registerGuard';
 import {SidecontainerComponent} from "./sidecontainer/sidecontainer.component";
 
 const routes: Routes = [
-  { path: 'login',component: LoginPageComponent,canActivate:[RegisterGuard], outlet: 'main'},
-  { path: 'register',component: RegisterPageComponent,canActivate:[RegisterGuard], outlet: 'main'},
-  { path: '**', redirectTo: 'mainpage' ,canActivate: [AuthGuard], outlet: 'main'  },
-  { path: 'mainpage',
-    component: SidecontainerComponent,
-    canActivate: [AuthGuard],
-    outlet: 'main',
+  { path: 'mainpage', component: SidecontainerComponent,canActivate: [AuthGuard],
     children: [
-      { path: '', component: ProfileBrowsingComponent,canActivate: [AuthGuard], outlet: 'comps' },
       { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
-      { path: 'return', component: ProfileBrowsingComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'browsing', component: ProfileBrowsingComponent ,canActivate: [AuthGuard], outlet: 'comps'},
     ]
   },
+
+  { path: 'login',component: LoginPageComponent,canActivate:[RegisterGuard]},
+  { path: 'register',component: RegisterPageComponent,canActivate:[RegisterGuard]},
+  { path: '', redirectTo: 'mainpage', pathMatch: 'full'},
+  { path: '**', redirectTo: '' ,canActivate: [AuthGuard] },
 ];
 
 @NgModule({
