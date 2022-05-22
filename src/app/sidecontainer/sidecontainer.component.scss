@@ -1,13 +1,44 @@
-.sidecontainer {
-  height: 100%;
-  min-height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding: 8px;
-  background: #1ed760;
-  filter: drop-shadow(0px 0px 8px black);
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: #1ed760;
 }
 
+.mat-sidenav-transition .mat-sidenav-backdrop.mat-sidenav-shown {
+  background: #1ed760;
+}
+
+.toolbar {
+  background: #1ed760;
+  color: black;
+  padding: 2px;
+  line-height: normal;
+  overflow: hidden;
+  min-width: 100%!important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  min-height: 100% !important;
+  height: 100% !important;
+  width: 100%!important;
+
+  .side-container {
+    padding: 8px;
+    color: black;
+    right: 0;
+    top : 0;
+    background: #1ed760;
+    width: 20vw!important;
+    display: flex;
+    float: left;
+    position: fixed;
+  }
+
+  .content {
+    min-width: 100%!important;
+    width: 100%!important;
+  }
+
+}

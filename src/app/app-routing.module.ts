@@ -9,16 +9,22 @@ import { AuthGuard } from './auth/authGuard';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { RegisterGuard } from './auth/registerGuard';
+import {SidecontainerComponent} from "./sidecontainer/sidecontainer.component";
 
 const routes: Routes = [
-  { path: '', component: ProfileBrowsingComponent,canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard]},
-  { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard]},
-  { path: 'return', component: ProfileBrowsingComponent ,canActivate: [AuthGuard]},
+  { path: 'mainpage', component: SidecontainerComponent,canActivate: [AuthGuard],
+    children: [
+      { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'browsing', component: ProfileBrowsingComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+    ]
+  },
+
   { path: 'login',component: LoginPageComponent,canActivate:[RegisterGuard]},
   { path: 'register',component: RegisterPageComponent,canActivate:[RegisterGuard]},
+  { path: '', redirectTo: 'mainpage', pathMatch: 'full'},
   { path: '**', redirectTo: '' ,canActivate: [AuthGuard] },
 ];
 
@@ -27,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent]
+export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent, SidecontainerComponent, LoginPageComponent, RegisterPageComponent]

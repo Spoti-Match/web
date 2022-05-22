@@ -1,11 +1,8 @@
 <html>
   <body  scroll="no">
     <div>
-      <div *ngIf="this.userService.isLoggedIn()">
-        <app-sidecontainer></app-sidecontainer>
-      </div>
-      <div fxFill fxLayout="row" fxLayoutAlign="center center">
-        <router-outlet style="margin-left: 266px;"></router-outlet>
+      <div>
+        <router-outlet style="width: 100%;"></router-outlet>
       </div>
     </div>
   </body>
