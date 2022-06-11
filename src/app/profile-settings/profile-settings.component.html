@@ -7,29 +7,30 @@
         </p>
       </div>
     </div>
-    <div fxLayout="column"  style="margin-left: 2vw;">
-      <div fxLayout="column" class="names" fxLayoutAlign="space-between center" >
+    <div fxLayout="column">
+      <div fxLayout="column" class="names">
         <mat-form-field class="fname"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
-          <mat-label>First name</mat-label>
+          <mat-label>Name</mat-label>
           <input formControlName="name" type="name" matInput>
         </mat-form-field>
       </div>
-      <div fxLayout="row">
-        <div>
-          <mat-form-field appearance="outline" class="date" style="font-size: 1.45vh; margin-right: 2vw;">
-            <mat-label>Date of birth</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-hint>DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+      <div fxLayout="column" class="Age">
+        <mat-form-field class="Age"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label>Age</mat-label>
+          <input formControlName="age" type="age" matInput>
+        </mat-form-field>
       </div>
       <div>
           <mat-form-field appearance="outline" style="width: 24vw !important;" >
             <mat-label>Opis</mat-label>
-            <textarea formControlName="bio" [maxLength]="255" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea [maxLength]="255" formControlName="bio" type="bio" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
+      </div>
+      <div fxLayout="column" class="sex">
+        <mat-form-field class="sex"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label>Enter your gender (MALE/FEMALE) all caps</mat-label>
+          <input formControlName="sex" type="sex" matInput>
+        </mat-form-field>
       </div>
       <div>
         <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
