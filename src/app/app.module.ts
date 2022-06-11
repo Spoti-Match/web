@@ -36,6 +36,7 @@ import { FlexLayoutModule, } from '@angular/flex-layout';
 import { RegisterGuard} from './auth/registerGuard';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {TokenInterceptor} from "../utils/token.interceptor";
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -89,12 +90,13 @@ export function tokenGetter(){
   ],
 
   entryComponents: [
-
   ],
 
-  providers: [AuthGuard,
-  RegisterGuard],
-
+  providers: [
+    AuthGuard,
+    RegisterGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+  ],
 
   bootstrap: [AppComponent]
 })

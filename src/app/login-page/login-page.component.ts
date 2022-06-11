@@ -42,11 +42,12 @@ export class LoginPageComponent implements OnInit {
     let authCredentials = new AuthenticationRequest(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value)
     this.userService.logIn(authCredentials).subscribe(
       (data: AuthenticationResponse)=> {
+        console.log(JSON.stringify(data));
         sessionStorage.setItem('authToken',data.jwt);
         window.alert("Successfully logged in");
         window.location.reload();
        }
-     );;
+     );
   }
 
 }

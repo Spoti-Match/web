@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
+import {UserService} from "../user-service/user.service";
 
 @Component({
   selector: 'app-profile-settings',
@@ -9,14 +10,7 @@ import {FormControl} from "@angular/forms";
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  hobbiesControl = new FormControl([]);
-  hobbyList: string[] = ['Reading', 'Stargazing', 'Hiking', 'Cooking', 'Board games', 'Video games', 'Cars', 'Traveling'];
-
-  onHobbyRemoved(hobby: string) {
-    const hobbies = this.hobbiesControl.value as string[];
-    this.removeFirst(hobbies, hobby);
-    this.hobbiesControl.setValue(hobbies); // To trigger change detection
-  }
+  myProfile: FormGroup;
 
   private removeFirst<T>(array: T[], toRemove: T): void {
     const index = array.indexOf(toRemove);
@@ -25,12 +19,26 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
 
-  constructor(private dateAdapter: DateAdapter<Date>) {
+  constructor(private dateAdapter: DateAdapter<Date>, private userService: UserService) {
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
 
   }
 
   ngOnInit(): void {
+    this.myProfile = new FormGroup({
+      name: new FormControl(null),
+      age: new FormControl(null),
+      sex: new FormControl(null),
+      bio: new FormControl(null),
+      picture: new FormControl(null)
+    });
+    this.userService.getMe().subscribe(user => {
+      this.myProfile.get('name')!.setValue(user.name);
+      this.myProfile.get('age')!.setValue(user.age);
+      this.myProfile.get('sex')!.setValue(user.sex);
+      this.myProfile.get('bio')!.setValue(user.bio);
+      this.myProfile.get('picture')!.setValue(user.picture);
+    });
   }
 
   public showMyMessage = false
@@ -42,6 +50,14 @@ export class ProfileSettingsComponent implements OnInit {
     setTimeout( () => {
       this.showMyMessage = false;
     }, 2000);
+    const body = {
+      name: this.myProfile.get('name')!.value,
+      age: this.myProfile.get('age')!.value,
+      sex: this.myProfile.get('sex')!.value,
+      bio: this.myProfile.get('bio')!.value,
+      picture: this.myProfile.get('picture')!.value,
+    }
+    this.userService.updateMyProfile(body).subscribe();
   }
 
 }
