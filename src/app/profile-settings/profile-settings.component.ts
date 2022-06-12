@@ -32,7 +32,8 @@ export class ProfileSettingsComponent implements OnInit {
       age: new FormControl(null),
       sex: new FormControl(null),
       bio: new FormControl(null),
-      picture: new FormControl(null)
+      picture: new FormControl(null),
+      preference_sex: new FormControl(null),
     });
     this.userService.getMe().subscribe(user => {
       this.myProfile.get('name')!.setValue(user.name);
@@ -40,6 +41,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.myProfile.get('sex')!.setValue(user.sex);
       this.myProfile.get('bio')!.setValue(user.bio);
       this.myProfile.get('picture')!.setValue(user.picture);
+      // this.myProfile.get('preference_sex')!.setValue(user.prefere)
     });
   }
 
