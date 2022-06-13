@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ProfileBrowsingComponent} from "./profile-browsing/profile-browsing.component";
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
-import {AccountSettingsComponent} from "./account-settings/account-settings.component";
+import {AccountDisplayComponent} from "./account-display/account-display.component";
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import { AuthGuard } from './auth/authGuard';
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'mainpage', component: SidecontainerComponent,canActivate: [AuthGuard],
     children: [
       { path: 'profile', component: ProfileChatComponent ,canActivate: [AuthGuard], outlet: 'comps'},
-      { path: 'accountSettings', component: AccountSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
+      { path: 'accountSettings', component: AccountDisplayComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'profileSettings', component: ProfileSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'searchSettings', component: SearchSettingsComponent ,canActivate: [AuthGuard], outlet: 'comps'},
       { path: 'browsing', component: ProfileBrowsingComponent ,canActivate: [AuthGuard], outlet: 'comps'},
@@ -33,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountSettingsComponent, SearchSettingsComponent, ProfileChatComponent, SidecontainerComponent, LoginPageComponent, RegisterPageComponent]
+export const RoutingComponents = [ProfileChatComponent, ProfileSettingsComponent, AccountDisplayComponent, SearchSettingsComponent, ProfileChatComponent, SidecontainerComponent, LoginPageComponent, RegisterPageComponent]

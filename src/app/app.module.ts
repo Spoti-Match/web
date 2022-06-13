@@ -15,7 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
-import {AccountSettingsComponent} from "./account-settings/account-settings.component";
+import {AccountDisplayComponent} from "./account-display/account-display.component";
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -36,6 +36,7 @@ import { FlexLayoutModule, } from '@angular/flex-layout';
 import { RegisterGuard} from './auth/registerGuard';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {TokenInterceptor} from "../utils/token.interceptor";
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -47,7 +48,7 @@ export function tokenGetter(){
     ProfileBrowsingComponent,
     DecisionButtonsComponent,
     ProfileSettingsComponent,
-    AccountSettingsComponent,
+    AccountDisplayComponent,
     ProfileChatComponent,
     SearchSettingsComponent,
     RegisterPageComponent,
@@ -89,12 +90,13 @@ export function tokenGetter(){
   ],
 
   entryComponents: [
-
   ],
 
-  providers: [AuthGuard,
-  RegisterGuard],
-
+  providers: [
+    AuthGuard,
+    RegisterGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+  ],
 
   bootstrap: [AppComponent]
 })
