@@ -1,10 +1,8 @@
 <form [formGroup]="myProfile">
-  <div fxLayout="row" fxLayoutAlign="center center"  style="height: 100%; margin-top: 8%; width: 100%!important;">
+  <div fxLayout="row" fxLayoutAlign="center center"  style="height: 100%; margin-top: 6%; width: 100%!important;">
     <div fxLayout="column">
-      <div class="photos">
-        <p fxLayoutAlign="center center">
-          Zdjęcia użytkownika
-        </p>
+      <div>
+        <img style=" margin-right: 2vw; width: 18vw; height: 50vh;" src="{{myProfile.get('picture')!.value}}}">
       </div>
     </div>
     <div fxLayout="column">
@@ -26,15 +24,19 @@
             <textarea [maxLength]="255" formControlName="bio" type="bio" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
       </div>
-      <div fxLayout="column" class="sex">
-        <mat-form-field class="sex"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
-          <mat-label>Enter your gender (MALE/FEMALE) all caps</mat-label>
+      <div fxLayout="row" class="sex">
+        <mat-form-field matTooltip="Enter your gender (MALE/FEMALE) all caps" class="sex"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label >Enter your gender (MALE/FEMALE) all caps</mat-label>
           <input formControlName="sex" type="sex" matInput>
         </mat-form-field>
-      </div>
-      <div>
-        <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
-        <p *ngIf="showMyMessage">Profile info saved!</p>
+        <mat-form-field class="addpic"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh; margin-left: 2vw;">
+          <mat-label >Add picture URL</mat-label>
+          <input formControlName="picture" type="picture" matInput>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
+          <p *ngIf="showMyMessage">Profile info saved!</p>
+        </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../user-service/user.service";
+import {stringify} from "@angular/compiler/src/util";
 
 
 @Component({
@@ -10,6 +11,8 @@ import {UserService} from "../user-service/user.service";
   styleUrls: ['./profile-settings.component.scss']
 })
 export class ProfileSettingsComponent implements OnInit {
+
+
 
 
   myProfile: FormGroup;
@@ -41,8 +44,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.myProfile.get('sex')!.setValue(user.sex);
       this.myProfile.get('bio')!.setValue(user.bio);
       this.myProfile.get('picture')!.setValue(user.picture);
-      // this.myProfile.get('preference_sex')!.setValue(user.prefere)
     });
+
   }
 
   public showMyMessage = false
@@ -60,6 +63,7 @@ export class ProfileSettingsComponent implements OnInit {
       sex: this.myProfile.get('sex')!.value,
       bio: this.myProfile.get('bio')!.value,
       picture: this.myProfile.get('picture')!.value,
+
     }
     this.userService.updateMyProfile(body).subscribe();
   }
