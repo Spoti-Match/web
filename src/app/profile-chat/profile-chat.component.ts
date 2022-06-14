@@ -29,16 +29,16 @@ export class ProfileChatComponent implements OnInit {
   chatInput: string ="";
 
   ngOnInit(){
-    this.getPairs();
     this.pairSubscriptions.push(this.userService.getMyDetails().subscribe(
       (data) => {
         this.userDetails = data;
       }
     ));
+    this.getPairs();
   }
 
   getPairs(){
-    this.subscriptions.push(this.userService.getPairs().subscribe(
+    this.pairSubscriptions.push(this.userService.getPairs().subscribe(
       (data)=>{
         let tempData = JSON.stringify(data)
         this.pairs = JSON.parse(tempData)
@@ -47,6 +47,14 @@ export class ProfileChatComponent implements OnInit {
     ))
   }
 
+  isCurrentUser(id: any){
+    if(id == this.userDetails.id){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
   loadChat(pair: Pair){
 
     this.subscriptions.forEach((item) =>{

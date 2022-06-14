@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { UserService } from '../user-service/user.service';
@@ -45,7 +46,7 @@ export class LoginPageComponent implements OnInit {
         console.log(JSON.stringify(data));
         sessionStorage.setItem('authToken',data.jwt);
         window.alert("Successfully logged in");
-        window.location.reload();
+        this.router.navigate(['mainpage'])
        }
      );
   }
