@@ -4,9 +4,11 @@ import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
+import { UserDetails } from '../models/userDetails/userDetails';
 import {User} from "../models/User/user";
 import {Observable, pairs} from "rxjs";
 import {UserDetails} from "../models/userDetails/userDetails";
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,7 @@ export class UserService {
   }
 
 
+
   logIn(credentials: AuthenticationRequest){
     return this.getToken(credentials);
   }
@@ -36,6 +39,24 @@ export class UserService {
   logOut(){
     sessionStorage.removeItem("authToken");
     alert("Successfully logged out");
+  }
+
+
+  getPairs(){
+    return this.http.get<string>(HttpRouting.backEndBase + "/me/pairs")
+  }
+
+
+  getMyDetails(){
+    return this.http.get(HttpRouting.backEndBase + "/me")
+  }
+
+  getPreviousMessages(userId : number){
+    return this.http.get(HttpRouting.backEndBase + "/me/messages/" + userId )
+  }
+
+  getUserFromId(userId: number){
+    return this.http.get(HttpRouting.backEndBase + "/users/" + userId)
   }
 
   getMe(): Observable<User> {
@@ -62,7 +83,7 @@ export class UserService {
 
 
   getTest(){
-    this.http.get<String>(HttpRouting.backEndBase + "/").subscribe(
+    this.http.get(HttpRouting.backEndBase + "/").subscribe(
       data => {
         console.log(data);
       }
