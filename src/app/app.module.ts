@@ -36,6 +36,9 @@ import { FlexLayoutModule, } from '@angular/flex-layout';
 import { RegisterGuard} from './auth/registerGuard';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { RxStompService } from './rxStomp/rx-stomp.service';
+import { rxStompServiceFactory } from './rxStomp/rx-stomp.service.factory';
+
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -61,7 +64,7 @@ export function tokenGetter(){
       config: {
         tokenGetter: tokenGetter,
         authScheme: "Bearer ",
-        allowedDomains: ["localhost:8081", "https://api.spotimatch.tk"]
+        allowedDomains: ["localhost:8081", "api.spotimatch.tk"]
       },
     }),
     HttpClientModule,
@@ -92,8 +95,14 @@ export function tokenGetter(){
 
   ],
 
-  providers: [AuthGuard,
-  RegisterGuard],
+  providers: [
+    AuthGuard,
+    RegisterGuard,
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+    },
+  ],
 
 
   bootstrap: [AppComponent]

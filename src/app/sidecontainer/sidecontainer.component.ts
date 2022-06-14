@@ -20,7 +20,10 @@ export class SidecontainerComponent implements OnInit {
   profil() {
     this.router.navigateByUrl('/profile');
   }
-
+  logout(){
+    this.userService.logOut();
+    window.location.reload()
+  }
   logoutButton(){
     this.userService.logOut();
     window.location.reload();

@@ -1,102 +1,127 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import {VERSION} from "@angular/forms";
+import { Observable, Subscriber, Subscription } from 'rxjs';
+import { ChatService } from '../chat-service/chat.service';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
+import { Pair } from '../models/pair/pair';
 import { UserService } from '../user-service/user.service';
+import { Message } from '@stomp/stompjs'
+import { UserDetails } from '../models/userDetails/userDetails';
 
 @Component({
   selector: 'app-profile-chat',
   templateUrl: './profile-chat.component.html',
-  styleUrls: ['./profile-chat.component.scss']
+  styleUrls: ['./profile-chat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProfileChatComponent implements OnInit {
 
+  pairs: Pair[];
+  receivedMessages: any[] = [];
+  pairSubscriptions: Subscription[] =[]
+  subscriptions: Subscription[] =[]
+  userDetails: any;
+  currentRecipientId: number;
 
-  @ViewChild("ChatListContainer", {static: false}) ChatListContainer : ElementRef
+
+
+  constructor(private userService: UserService,private chatService: ChatService, private changeDetection: ChangeDetectorRef){
+
+  }
 
   chatInput: string ="";
 
-  currentUser = {
-    name: "John Doe",
-    id: 1,
-    profileImageUrl:'https://pickaface.net/gallery/avatar/20151205_194059_2696_Chat.png'
+  ngOnInit(){
+    this.getPairs();
+    this.pairSubscriptions.push(this.userService.getMyDetails().subscribe(
+      (data) => {
+        this.userDetails = data;
+      }
+    ));
   }
 
-  User1 = {
-    name: "Jane Doe",
-    id: 2,
-    profileImageUrl:'https://thumbs.dreamstime.com/b/call-center-agent-avatar-vector-illustration-design-94931997.jpg'
+  getPairs(){
+    this.subscriptions.push(this.userService.getPairs().subscribe(
+      (data)=>{
+        let tempData = JSON.stringify(data)
+        this.pairs = JSON.parse(tempData)
+        console.log(this.pairs)
+      }
+    ))
   }
 
-  User2 = {
-    name: "Joan Doe",
-    id: 3,
-    profileImageUrl:'https://us.123rf.com/450wm/jemastock/jemastock1708/jemastock170806710/83824989-centro-de-atenci%C3%B3n-al-cliente-atenci%C3%B3n-al-cliente-asistente-icono-de-avatar-ilustraci%C3%B3n-vectorial-di.jpg'
-  }
+  loadChat(pair: Pair){
 
-  chatmessage: {
+    this.subscriptions.forEach((item) =>{
+      item.unsubscribe();
+    })
 
-    user: any,
-    message: string
-    createdat: number
-  } [] = [
-    {
-      user: this.currentUser,
-      message: 'Message placement curruser',
-      createdat: Date.now(),
-    },
+    this.subscriptions = []
 
-    {
-      user: this.User1,
-      message: 'Message placement user1',
-      createdat: Date.now(),
-    },
+    if(pair.leftUserId != this.userDetails.id){
+      this.currentRecipientId = pair.leftUserId;
+    }
+    else{
+      this.currentRecipientId = pair.rightUserId;
+    }
 
-    {
-      user: this.User2,
-      message: 'Message placement user2',
-      createdat: Date.now(),
-    },
+    this.subscriptions.push(this.userService.getPreviousMessages(this.currentRecipientId).subscribe(
+      (data: any) => {
+        let tempData = JSON.stringify(data)
+        this.receivedMessages = JSON.parse(tempData)
+        console.log(this.receivedMessages)
+        this.changeDetection.detectChanges()
+      }
+    ));
 
-    {
-      user: this.currentUser,
-      message: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac varius turpis, nec varius tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ' +
-        'Praesent faucibus mollis purus, vitae accumsan dolor fermentum vitae. Pellentesque euismod tellus ac nisi congue porta. Nullam tortor dolor, iaculis vitae tincidunt vitae, sodales at ipsum. ' +
-        'Duis consequat pharetra lacinia. Integer posuere porttitor augue ut bibendum. Proin tincidunt, turpis sed sollicitudin malesuada, mauris eros posuere orci, et tempor metus sapien sit amet risus. ' +
-        'Morbi imperdiet eget dolor et ullamcorper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi non tellus venenatis, convallis sem in, lobortis ligula. ' +
-        'Vivamus congue, augue in cursus elementum, diam lacus efficitur turpis, a dictum odio felis non arcu."',
-      createdat: Date.now(),
-    },
+    this.subscriptions.push(this.chatService.receiveMessage(this.currentRecipientId).subscribe(
+        (message: Message) => {
+          console.log(JSON.parse(message.body).content)
+          this.receivedMessages.push(JSON.parse(message.body))
+          this.changeDetection.detectChanges()
+        })
+      );
 
-  ]
-
-
-
-name='Angular ' + VERSION.major;
-
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
-
-  send() {
-    this.chatmessage.push({
-      message: this.chatInput,
-      user: this.currentUser,
-      createdat: Date.now()
-    });
-    this.chatInput ='';
-    this.scrollToBottom();
-  }
-
-  scrollToBottom() {
-    this.ChatListContainer.nativeElement.scrollTop = this.ChatListContainer.nativeElement.scrollHeight
-  }
-
-  constructor() { }
-
-
-  ngOnInit(): void {
-
+      this.subscriptions.push(this.chatService.receiveMessage(this.userDetails.id).subscribe(
+        (message: Message) => {
+          console.log(JSON.parse(message.body).content)
+          this.receivedMessages.push(JSON.parse(message.body))
+          this.changeDetection.detectChanges()
+        })
+      );
 
   }
+
+  send(content: string) {
+
+    let message = {
+        recipientId: this.currentRecipientId,
+        content: content
+    }
+
+    console.log(message)
+    this.chatService.sendMessage(message)
+    this.chatInput = ""
+    this.changeDetection.detectChanges()
+  }
+
+  testButton(){
+    console.log(this.pairs)
+    console.log(this.userDetails)
+    console.log(this.currentRecipientId)
+    console.log(this.receivedMessages)
+    this.changeDetection.detectChanges()
+  }
+
+
+  ngOnDestroy(){
+      this.pairSubscriptions.forEach((item) =>{
+        item.unsubscribe();
+      })
+      this.subscriptions.forEach((item) =>{
+        item.unsubscribe();
+      })
+    }
+
 }

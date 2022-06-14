@@ -12,15 +12,8 @@ position: fixed;
         <div fxLayout="column" fxLayoutAlign="center">
           <div fxLayout="column" fxLayoutAlign="center">
             <mat-divider></mat-divider>
-            <button mat-button  [routerLink]="[{outlets: {comps: ['profile']}}]" style="cursor: pointer">Profil Użytkownika</button>
+            <button mat-button  [routerLink]="[{outlets: {comps: ['profile']}}]" style="cursor: pointer">Chat</button>
             <mat-divider></mat-divider>
-            <button mat-button  [routerLink]="[{outlets: {comps: ['profile']}}]" >Zdjęcie | Nazwa profilu | hh:mm</button>
-            <mat-divider></mat-divider>
-            <button mat-button  [routerLink]="[{outlets: {comps: ['profile']}}]">Profil 2</button>
-            <mat-divider></mat-divider>
-            <p fxLayoutAlign="center">
-              ITD.
-            </p>
             <mat-divider></mat-divider>
           </div>
         </div>
@@ -33,20 +26,17 @@ position: fixed;
           </button>
           <span>Spotimatch</span>
           <span class="spacer"></span>
-          <button mat-button [routerLink]="[{outlets: {comps: ['browsing']}}]" matTooltip="Liked you">  do zmiany na listę par
-          <mat-icon>favorite</mat-icon>
-        </button>
             <button mat-button [routerLink]="[{outlets: {comps: ['profileSettings']}}]" matTooltip="Profile settings">
               <mat-icon>person</mat-icon>
             </button>
           <button mat-button  [routerLink]="[{outlets: {comps: ['accountSettings']}}]" matTooltip="Search settings">
             <mat-icon>settings</mat-icon>
           </button>
-          <button mat-button  matTooltip="Dark mode enable/disable">
-            <mat-icon>brightness_2</mat-icon>
-          </button>
           <button mat-button [routerLink]="[{outlets: {comps: ['browsing']}}]" matTooltip="Return to main screen">
             <mat-icon>home</mat-icon>
+          </button>
+          <button mat-button  (click)="logout()" matTooltip="Logout">
+            <mat-icon>logout</mat-icon>
           </button>
         </mat-toolbar>
       <router-outlet fxLayoutAlign="center center" style="width: 100%!important; height: 100%!important;" name="comps"></router-outlet>
