@@ -4,17 +4,18 @@ import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
+import { UserDetails } from '../models/userDetails/userDetails';
 import {User} from "../models/User/user";
 import {Observable, pairs} from "rxjs";
-import {UserDetails} from "../models/userDetails/userDetails";
+import {ProfileBrowsingComponent} from "../profile-browsing/profile-browsing.component";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
   constructor(private http: HttpClient) { }
+
 
   getToken(credentials: AuthenticationRequest){
     return this.http.post<AuthenticationResponse>(HttpRouting.backEndBase + "/auth",credentials)
@@ -71,13 +72,16 @@ export class UserService {
     return this.http.put<User>(HttpRouting.backEndBase + "/me", user);
   }
 
-  getWhatever(): Observable<User> {
+  findPairs(): Observable<User> {
     return this.http.get<User>(HttpRouting.backEndBase + "/pairs/find/");
   }
 
-  voteYes(): Observable<User> {
+  voteYes(userId: number) {
+    return this.http.post<boolean>(HttpRouting.backEndBase + "/users/" + userId + "?match=true", null);
+  }
 
-    return this.http.get<User>(HttpRouting.backEndBase + "/users/" + + "match=true");
+  voteNo(userId: number) {
+    return this.http.post<boolean>(HttpRouting.backEndBase + "/users/" + userId + "?match=false", null);
   }
 
 

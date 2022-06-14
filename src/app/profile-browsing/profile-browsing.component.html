@@ -12,11 +12,11 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="space-around center" style="height: 18vh;">
     <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 16vw;">
-      <button mat-fab class="Dec" >
+      <button (click)="voteNoFunc()" mat-fab class="Dec" >
         <mat-icon>thumb_down_alt</mat-icon>
       </button>
-      <button mat-fab class="Dec">
-        <mat-icon>thumb_up_alt</mat-icon>
+      <button (click)="voteYesFunc()" mat-fab class="Dec">
+        <mat-icon >thumb_up_alt</mat-icon>
       </button>
     </div>
   </div>
