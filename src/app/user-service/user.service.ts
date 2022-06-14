@@ -4,7 +4,6 @@ import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
-import { UserDetails } from '../models/userDetails/userDetails';
 import {User} from "../models/User/user";
 import {Observable, pairs} from "rxjs";
 import {UserDetails} from "../models/userDetails/userDetails";
@@ -72,7 +71,7 @@ export class UserService {
     return this.http.put<User>(HttpRouting.backEndBase + "/me", user);
   }
 
-  getPairs(): Observable<User> {
+  getWhatever(): Observable<User> {
     return this.http.get<User>(HttpRouting.backEndBase + "/pairs/find/");
   }
 

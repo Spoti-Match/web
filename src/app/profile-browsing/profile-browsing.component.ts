@@ -19,7 +19,7 @@ export class ProfileBrowsingComponent implements OnInit {
       console.log(JSON.stringify(user));
     });
 
-   this.userService.getPairs().subscribe(user => {
+   this.userService.getWhatever().subscribe(user => {
      this.currProfile = user;
      console.log(JSON.stringify(user));
    });
