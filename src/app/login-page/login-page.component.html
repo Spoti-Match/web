@@ -1,14 +1,14 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
+  <mat-card class="box" style="margin: 50px;">
     <mat-card-header>
-      <mat-card-title>Log in</mat-card-title>
+      <mat-card-title>Log in to Spotimatch!</mat-card-title>
     </mat-card-header>
     <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()"  class="login-form">
       <mat-card-content>
-        <mat-form-field class="login-full-width">
+        <mat-form-field class="login-full-width" style="margin-top: 25px;">
           <input id="email" type="text" formControlName="email" matInput placeholder="Email">
         </mat-form-field>
-        <mat-form-field class="login-full-width">
+        <mat-form-field class="login-full-width" >
           <input id="password" [type]="displayPassword ? 'text' : 'password' " formControlName="password" matInput placeholder="Password">
           <mat-icon (click)="changeVisibility()" aria-hidden="false" aria-label="Password Visibility">{{!displayPassword? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>

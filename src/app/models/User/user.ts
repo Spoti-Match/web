@@ -1,10 +1,13 @@
+import {Preferences} from "../userDetails/preferences";
+
 export interface User {
-  id: number;
+  id: number
   email: string;
-  password: string;
   name: string;
   sex: string;
   age: number;
   bio: string;
   picture: string;
+  preferences: Preferences;
+  timestamp: string;
 }

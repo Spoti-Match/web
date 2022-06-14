@@ -1,19 +1,36 @@
 
 <div class="chatbody">
-  <div class="card">
-    <div class="chatlist" #ChatListContainer>
-      <ng-container *ngFor="let item of chatmessage">
-        <div class="chatitem" [ngClass]="{'r': item?.user?.id == currentUser.id, 'l': item?.user?.id != currentUser.id}">
-          <img id="profpic" [src]="item.user.profileImageUrl"/>
-          <p id="msg-elem">{{item?.message}}</p>
-          <span id="time">{{ item.createdat | date:'HH:mm'}}</span>
-        </div>
-      </ng-container>
+  <div style="display: flex;">
+    <mat-list style="width: 100px;overflow-y: auto; flex-direction: row;">
+      <div *ngFor="let pair of pairs">
+        <mat-list-item>
+          <button mat-flat-button color="accent" style="margin: 5%;" (click)="loadChat(pair)">
+            {{pair.id}}
+          </button>
+        </mat-list-item>
+      </div>
+    </mat-list>
+
+    <div id="Chat+text">
+    <div class="chatlist" id="chat">
+     <div *ngFor="let message of receivedMessages">
+      <div class="chatItem" style="justify-content: right;" *ngIf="message.senderId != currentRecipientId; else elseBlock">
+        <mat-chip id="msg-elem" >{{message.content}}</mat-chip>
+      </div>
+      <ng-template #elseBlock>
+      <div class="chatItem" style="justify-content: left">
+        <mat-chip id="msg-elem" style="background-color:aqua">{{message.content}}</mat-chip>
+      </div>
+     </ng-template>
+     </div>
     </div>
     <div class="chat-footer">
       <textarea id="msginput" [(ngModel)]="chatInput"></textarea>
-      <button id="sendbutton" (click)="send(); scrollToBottom()" [disabled]="chatInput.length <= 0">Send</button>
+      <button id="sendbutton" (click)="send(chatInput)" [disabled]="chatInput.length <= 0">Send</button>
+      <button id="testbutton" (click)="testButton()">TEST</button>
+    </div>
     </div>
   </div>
+
 </div>
 
