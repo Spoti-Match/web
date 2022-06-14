@@ -1,8 +1,8 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { KeycloakAngularModule} from 'keycloak-angular';
 // import { KeycloakInit } from 'src/utils/keycloak-init.factory';
-import { AppRoutingModule, RoutingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material/material.module";
@@ -26,9 +26,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from "@angular/material/select";
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthGuard} from './auth/authGuard';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -36,7 +35,9 @@ import { FlexLayoutModule, } from '@angular/flex-layout';
 import { RegisterGuard} from './auth/registerGuard';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {TokenInterceptor} from "../utils/token.interceptor";
+import { RxStompService } from './rxStomp/rx-stomp.service';
+import { rxStompServiceFactory } from './rxStomp/rx-stomp.service.factory';
+
 
 export function tokenGetter(){
   return sessionStorage.getItem("authToken");
@@ -62,7 +63,7 @@ export function tokenGetter(){
       config: {
         tokenGetter: tokenGetter,
         authScheme: "Bearer ",
-        allowedDomains: ["localhost:8081", "https://api.spotimatch.tk"]
+        allowedDomains: ["localhost:8081", "api.spotimatch.tk"]
       },
     }),
     HttpClientModule,
@@ -95,8 +96,12 @@ export function tokenGetter(){
   providers: [
     AuthGuard,
     RegisterGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+    },
   ],
+
 
   bootstrap: [AppComponent]
 })

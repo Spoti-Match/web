@@ -3,10 +3,14 @@ $prim: #1ed760;
 
 .chatbody {
   display: flex;
-  height: 100vh;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 90vh;
   z-index: 99;
   flex-direction: column;
   margin-left: 0;
+  background-color: white;
 }
 
 .card {
@@ -20,19 +24,18 @@ $prim: #1ed760;
 
 .chatlist {
   display: flex;
-  height: 100vh;
+  height: 50vh;
   width: 47vw;
   flex-direction: column;
   margin-top: auto;
   padding: 16px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
-  .chatitem {
+  .chatItem {
     max-width: 80%;
     margin: 8px 0;
     display: flex;
     flex-direction: row;
-
     #msg-elem {
       margin: auto 8px;
       background: #1ed760;
@@ -41,6 +44,7 @@ $prim: #1ed760;
       filter: drop-shadow(1px 1px 3px black);
       max-width: 30vw;
       word-break: break-word;
+
     }
 
     #profpic {
@@ -56,29 +60,6 @@ $prim: #1ed760;
       margin: auto 0;
       padding-top: 1.5vh;
     }
-  }
-
-  .l {
-    margin-left: 8px;
-    margin-right: auto;
-
-    #msg-elem {
-      margin-left: -13px;
-      margin-top: 21px;
-    }
-
-  }
-
-  .r {
-    margin-left: auto;
-    margin-right: 8px;
-    flex-direction: row-reverse;
-
-    #msg-elem {
-      margin-right: -18px;
-      margin-top: 21px;
-    }
-
   }
 }
 
