@@ -15,7 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {ProfileSettingsComponent} from "./profile-settings/profile-settings.component";
-import {AccountSettingsComponent} from "./account-settings/account-settings.component";
+import {AccountDisplayComponent} from "./account-display/account-display.component";
 import {ProfileChatComponent} from "./profile-chat/profile-chat.component";
 import {SearchSettingsComponent} from "./search-settings/search-settings.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -49,7 +49,7 @@ export function tokenGetter(){
     ProfileBrowsingComponent,
     DecisionButtonsComponent,
     ProfileSettingsComponent,
-    AccountSettingsComponent,
+    AccountDisplayComponent,
     ProfileChatComponent,
     SearchSettingsComponent,
     RegisterPageComponent,
@@ -91,7 +91,6 @@ export function tokenGetter(){
   ],
 
   entryComponents: [
-
   ],
 
   providers: [

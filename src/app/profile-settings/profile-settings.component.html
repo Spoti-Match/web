@@ -1,60 +1,43 @@
-<div fxLayout="row" fxLayoutAlign="center center"  style="height: 100%; margin-top: 8%;">
-  <div fxLayout="column">
-    <div class="photos">
-      <p fxLayoutAlign="center center">
-        Zdjęcia użytkownika
-      </p>
-    </div>
-  </div>
-  <div fxLayout="column"  style="margin-left: 2vw;">
-    <div fxLayout="row" class="names" >
-      <mat-form-field class="fname"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
-        <mat-label>First name</mat-label>
-        <input type="fname" matInput placeholder="John">
-      </mat-form-field>
-      <mat-form-field fxLayoutAlign="center center" class="lname" appearance="outline" style="margin-left: 2vw; font-size: 1.45vh;" >
-        <mat-label>Last name</mat-label>
-        <input type="lname" matInput placeholder="Doe">
-      </mat-form-field>
-    </div>
-    <div fxLayout="row">
+<form [formGroup]="myProfile">
+  <div fxLayout="row" fxLayoutAlign="center center"  style="height: 100%; margin-top: 8%; width: 100%!important;">
+    <div fxLayout="column">
       <div>
-        <mat-form-field appearance="outline" class="date" style="font-size: 1.45vh; margin-right: 2vw;">
-          <mat-label>Date of birth</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <img style="  width: 18vw; height: 50vh; margin-right: 1.4vw;" src="{{myProfile.get('picture')!.value}}">
       </div>
     </div>
-    <div>
-      <form>
-        <mat-form-field appearance="outline" style="width: 24vw !important;" >
-          <mat-label>Opis</mat-label>
-          <textarea [maxLength]="650" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
+    <div fxLayout="column">
+      <div fxLayout="column" class="names">
+        <mat-form-field  class="fname"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label >Name</mat-label>
+          <input [maxLength]="25" formControlName="name" type="name" matInput>
         </mat-form-field>
-      </form>
-    </div>
-    <div>
-      <mat-form-field class="hobby-pick" style="width: 24vw !important;" appearance="outline">
-        <mat-label>Hobbies</mat-label>
-        <mat-select [formControl]="hobbiesControl" multiple>
-          <mat-select-trigger>
-            <mat-chip-list>
-              <mat-chip fxLayout="row" *ngFor="let hobby of hobbiesControl.value" [removable]="true" (removed)="onHobbyRemoved(hobby)">
-                {{ hobby }}
-                <mat-icon matChipRemove>cancel</mat-icon>
-              </mat-chip>
-            </mat-chip-list>
-          </mat-select-trigger>
-          <mat-option *ngFor="let hobby of hobbyList" [value]="hobby">{{hobby}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
-      <p *ngIf="showMyMessage">Profile info saved!</p>
+      </div>
+      <div fxLayout="column" class="Age">
+        <mat-form-field class="Age"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label>Age</mat-label>
+          <input formControlName="age" type="age" matInput>
+        </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field appearance="outline" style="width: 24vw !important;" >
+            <mat-label>Opis</mat-label>
+            <textarea [maxLength]="255" formControlName="bio" type="bio" class="txt"  matInput placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+      </div>
+      <div fxLayout="row" class="sex">
+        <mat-form-field matTooltip="Enter your gender (MALE/FEMALE) all caps" class="sex"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh;">
+          <mat-label>Enter your gender (MALE/FEMALE) all caps</mat-label>
+          <input formControlName="sex" type="sex" matInput>
+        </mat-form-field>
+        <mat-form-field class="addpic"  fxLayoutAlign="space-around-center" appearance="outline" style="font-size: 1.45vh; margin-left: 2vw;">
+          <mat-label style="width: 16vw!important;">Add picture URL</mat-label>
+          <input formControlName="picture" type="picture" matInput>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button class="save" (click)="showMessageSoon()">Save</button>
+          <p *ngIf="showMyMessage">Profile info saved!</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</form>

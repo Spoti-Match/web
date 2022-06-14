@@ -5,6 +5,9 @@ import { AuthenticationRequest } from '../models/authentication-request/authenti
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
 import { UserDetails } from '../models/userDetails/userDetails';
+import {User} from "../models/User/user";
+import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +40,7 @@ export class UserService {
     alert("Successfully logged out");
   }
 
+
   getPairs(){
     return this.http.get<string>(HttpRouting.backEndBase + "/me/pairs")
   }
@@ -53,6 +57,20 @@ export class UserService {
   getUserFromId(userId: number){
     return this.http.get(HttpRouting.backEndBase + "/users/" + userId)
   }
+
+  getMe(): Observable<User> {
+    return this.http.get<User>(HttpRouting.backEndBase + "/me");
+  }
+
+
+  getUserbyID(userID: number): Observable<User> {
+    return this.http.get<User>(HttpRouting.backEndBase + "/users" + userID);
+  }
+
+  updateMyProfile(user: any): Observable<User> {
+    return this.http.put<User>(HttpRouting.backEndBase + "/me", user);
+  }
+
 
   getTest(){
     this.http.get(HttpRouting.backEndBase + "/").subscribe(
