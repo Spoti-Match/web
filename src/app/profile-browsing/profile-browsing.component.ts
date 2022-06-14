@@ -9,15 +9,21 @@ import {User} from "../models/User/user";
 })
 export class ProfileBrowsingComponent implements OnInit {
 
-  public myProfile: User;
+  public currProfile: User;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getMe().subscribe(user => {
-      this.myProfile = user;
+      this.currProfile = user;
       console.log(JSON.stringify(user));
     });
+
+   this.userService.getPairs().subscribe(user => {
+     this.currProfile = user;
+     console.log(JSON.stringify(user));
+   });
+
   }
 
 }

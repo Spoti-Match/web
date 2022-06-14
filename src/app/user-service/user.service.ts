@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpEvent} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
 import {User} from "../models/User/user";
-import {Observable} from "rxjs";
+import {Observable, pairs} from "rxjs";
+import {UserDetails} from "../models/userDetails/userDetails";
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,15 @@ export class UserService {
 
   updateMyProfile(user: any): Observable<User> {
     return this.http.put<User>(HttpRouting.backEndBase + "/me", user);
+  }
+
+  getPairs(): Observable<User> {
+    return this.http.get<User>(HttpRouting.backEndBase + "/pairs/find/");
+  }
+
+  voteYes(): Observable<User> {
+
+    return this.http.get<User>(HttpRouting.backEndBase + "/users/" + + "match=true");
   }
 
 
