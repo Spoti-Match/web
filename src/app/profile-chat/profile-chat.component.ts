@@ -1,13 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
-import {VERSION} from "@angular/forms";
-import { Observable, Subscriber, Subscription } from 'rxjs';
+import {Component,  OnInit,  ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ChatService } from '../chat-service/chat.service';
-import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
-import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { Pair } from '../models/pair/pair';
 import { UserService } from '../user-service/user.service';
 import { Message } from '@stomp/stompjs'
-import { UserDetails } from '../models/userDetails/userDetails';
 
 @Component({
   selector: 'app-profile-chat',
