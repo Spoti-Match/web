@@ -5,7 +5,7 @@
       <div *ngFor="let pair of pairs">
         <mat-list-item>
           <button mat-flat-button color="accent" style="margin: 5%;" (click)="loadChat(pair)">
-            <div *ngIf="isCurrentUser(pair.leftUserId); else kek">{{pair.leftUserName}</div>
+            <div *ngIf="isCurrentUser(pair.leftUserId); else kek">{{pair.leftUserName}}</div>
             <ng-template #kek>{{pair.rightUserName}}</ng-template>
           </button>
         </mat-list-item>
