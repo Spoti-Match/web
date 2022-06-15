@@ -4,16 +4,16 @@ import { HttpRouting } from 'src/utils/httpRouting';
 import { AuthenticationRequest } from '../models/authentication-request/authentication-request';
 import { AuthenticationResponse } from '../models/authentication-response/authentication-response';
 import { RegisterUser } from '../models/register-user/register-user';
-import { UserDetails } from '../models/userDetails/userDetails';
 import {User} from "../models/User/user";
 import {Observable, pairs} from "rxjs";
-import {ProfileBrowsingComponent} from "../profile-browsing/profile-browsing.component";
-
+import {FormControl, FormGroup} from "@angular/forms";
+import {UserDetails} from "../models/userDetails/userDetails";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private pairProfile: FormGroup;
   constructor(private http: HttpClient) { }
 
 
@@ -28,8 +28,6 @@ export class UserService {
   isLoggedIn(){
     return sessionStorage.getItem("authToken") != null;
   }
-
-
 
   logIn(credentials: AuthenticationRequest){
     return this.getToken(credentials);
@@ -65,7 +63,7 @@ export class UserService {
 
 
   getUserbyID(userID: number): Observable<User> {
-    return this.http.get<User>(HttpRouting.backEndBase + "/users" + userID);
+    return this.http.get<User>(HttpRouting.backEndBase + "/users/" + userID);
   }
 
   updateMyProfile(user: any): Observable<User> {
