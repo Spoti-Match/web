@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user-service/user.service";
 import {User} from "../models/User/user";
 import {FormControl, FormGroup} from "@angular/forms";
-import {stringify} from "@angular/compiler/src/util";
 
 
 @Component({
@@ -82,7 +81,6 @@ export class ProfileBrowsingComponent implements OnInit {
       this.pairProfile.get('sex')!.setValue(user.sex);
       this.pairProfile.get('bio')!.setValue(user.bio);
       this.pairProfile.get('picture')!.setValue(user.picture);
-      // this.pairProfile.get('preference_sex')!.setValue(stringify(user.preferences.sex));
       this.picture = user.picture;
       this.bio = user.bio;
       this.age = user.age;

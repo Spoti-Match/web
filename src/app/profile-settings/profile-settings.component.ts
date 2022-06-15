@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../user-service/user.service";
-import {UserDetails} from "../models/userDetails/userDetails";
 
 
 @Component({
@@ -12,7 +11,7 @@ import {UserDetails} from "../models/userDetails/userDetails";
 })
 export class ProfileSettingsComponent implements OnInit {
 
-
+  public pref_sex: string = "";
 
 
   myProfile: FormGroup;
@@ -26,7 +25,6 @@ export class ProfileSettingsComponent implements OnInit {
 
   constructor(private dateAdapter: DateAdapter<Date>, private userService: UserService) {
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
-
   }
 
   ngOnInit(): void {
@@ -37,6 +35,7 @@ export class ProfileSettingsComponent implements OnInit {
       bio: new FormControl(null),
       picture: new FormControl(null),
       preference_sex: new FormControl(null),
+      preferences: new FormControl(null),
     });
     this.userService.getMe().subscribe(user => {
       this.myProfile.get('name')!.setValue(user.name);
@@ -45,9 +44,9 @@ export class ProfileSettingsComponent implements OnInit {
       this.myProfile.get('bio')!.setValue(user.bio);
       this.myProfile.get('picture')!.setValue(user.picture);
       this.myProfile.get('preference_sex')!.setValue(user.preferences.sex);
-      console.log(JSON.stringify(user.preferences.sex));
+      this.myProfile.get('preferences')!.setValue(user.preferences);
+      console.log(JSON.stringify(user.preferences));
     });
-
 
   }
 
@@ -66,12 +65,11 @@ export class ProfileSettingsComponent implements OnInit {
       sex: this.myProfile.get('sex')!.value,
       bio: this.myProfile.get('bio')!.value,
       picture: this.myProfile.get('picture')!.value,
-      preference_sex: this.myProfile.get('preference_sex')!.value,
+
     }
+    console.log(body);
     this.userService.updateMyProfile(body).subscribe();
   }
 
 }
-
-
 
