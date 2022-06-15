@@ -1,7 +1,7 @@
 import {Preferences} from "../userDetails/preferences";
 
 export interface User {
-  id: number
+  id: number;
   email: string;
   name: string;
   sex: string;
