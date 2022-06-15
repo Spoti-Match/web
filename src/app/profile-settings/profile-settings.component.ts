@@ -44,7 +44,10 @@ export class ProfileSettingsComponent implements OnInit {
       this.myProfile.get('sex')!.setValue(user.sex);
       this.myProfile.get('bio')!.setValue(user.bio);
       this.myProfile.get('picture')!.setValue(user.picture);
+      this.myProfile.get('preference_sex')!.setValue(user.preferences.sex);
+      console.log(JSON.stringify(user.preferences.sex));
     });
+
 
   }
 
@@ -63,7 +66,7 @@ export class ProfileSettingsComponent implements OnInit {
       sex: this.myProfile.get('sex')!.value,
       bio: this.myProfile.get('bio')!.value,
       picture: this.myProfile.get('picture')!.value,
-
+      preference_sex: this.myProfile.get('preference_sex')!.value,
     }
     this.userService.updateMyProfile(body).subscribe();
   }

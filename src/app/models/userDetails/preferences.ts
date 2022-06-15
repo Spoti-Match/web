@@ -1,4 +1,3 @@
-
 export class Preferences{
 
   sex : string
