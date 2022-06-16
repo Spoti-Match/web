@@ -34,8 +34,8 @@ export class ProfileSettingsComponent implements OnInit {
       sex: new FormControl(null),
       bio: new FormControl(null),
       picture: new FormControl(null),
-      preferences: new FormControl(null),
-      preference_sex: new FormControl(null),
+      // preferences: new FormControl(null),
+      // preference_sex: new FormControl(null),
     });
     this.userService.getMe().subscribe(user => {
       this.myProfile.get('name')!.setValue(user.name);
@@ -43,8 +43,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.myProfile.get('sex')!.setValue(user.sex);
       this.myProfile.get('bio')!.setValue(user.bio);
       this.myProfile.get('picture')!.setValue(user.picture);
-      this.myProfile.get('preference_sex')!.setValue(user.preferences.sex);
-      this.myProfile.get('preferences')!.setValue(user.preferences);
+      // this.myProfile.get('preference_sex')!.setValue(user.preferences.sex);
+      // this.myProfile.get('preferences')!.setValue(user.preferences);
       console.log(JSON.stringify(user));
     });
 
@@ -59,8 +59,8 @@ export class ProfileSettingsComponent implements OnInit {
     setTimeout( () => {
       this.showMyMessage = false;
     }, 2000);
-    const myPreferences = this.myProfile.get('preferences')!.value;
-    myPreferences.sex = this.myProfile.get('preference_sex')!.value;
+    // const myPreferences = this.myProfile.get('preferences')!.value;
+    // myPreferences.sex = this.myProfile.get('preference_sex')!.value;
 
     const body = {
       name: this.myProfile.get('name')!.value,
@@ -68,7 +68,7 @@ export class ProfileSettingsComponent implements OnInit {
       sex: this.myProfile.get('sex')!.value,
       bio: this.myProfile.get('bio')!.value,
       picture: this.myProfile.get('picture')!.value,
-      preferences: myPreferences,
+      // preferences: myPreferences,
 
     }
     console.log(body);
