@@ -1,3 +1,4 @@
+//Michał Wilewski
 import {Preferences} from "../userDetails/preferences";
 
 export interface User {

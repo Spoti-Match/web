@@ -1,3 +1,4 @@
+//Michał Wilewski
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ProfileBrowsingComponent} from "./profile-browsing/profile-browsing.component";

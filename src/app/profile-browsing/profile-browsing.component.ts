@@ -1,3 +1,4 @@
+//Michał Wilewski
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user-service/user.service";
 import {User} from "../models/User/user";

@@ -1,3 +1,4 @@
+//Michał Wilewski
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';

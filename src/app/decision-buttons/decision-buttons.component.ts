@@ -1,3 +1,4 @@
+//Michał Wilewski
 import { Component, OnInit } from '@angular/core';
 
 @Component({
